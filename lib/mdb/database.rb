@@ -35,7 +35,7 @@ module Mdb
     
     
     def read_csv(table)
-      csv = execute "mdb-export -D '%F %T' -d \\| #{file_name} #{Shellwords.escape(table)}"
+      csv = system "mdb-export -D '%F %T' -d \\| #{file_name} #{Shellwords.escape(table)}"
       empty_table!(table) if csv.empty?
       csv
     end
